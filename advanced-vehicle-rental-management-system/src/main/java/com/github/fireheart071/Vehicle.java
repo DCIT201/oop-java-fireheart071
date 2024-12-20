@@ -15,11 +15,8 @@ public abstract class Vehicle {
         if(model == null || model.trim().isEmpty()){
             throw new IllegalArgumentException("model cannot be empty");
         }
-        if(baseRentalRate == null || baseRentalRate.trim().isEmpty()){
+        if(baseRentalRate <= 0){
             throw new IllegalArgumentException("baseRentalRate cannot be empty");
-        }
-        if(isAvailable == null || isAvailable.trim().isEmpty()){
-            throw new IllegalArgumentException("isAvailable cannot be empty");
         }
         this.vehicleId = vehicleId;
         this.model = model;
