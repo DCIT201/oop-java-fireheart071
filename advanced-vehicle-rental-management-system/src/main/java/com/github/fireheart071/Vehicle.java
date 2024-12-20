@@ -21,7 +21,7 @@ public abstract class Vehicle {
         this.vehicleId = vehicleId;
         this.model = model;
         this.baseRentalRate = baseRentalRate;
-        this.isAvailable = isAvailable;
+        this.isAvailable = false;
     }
     // Getters and setters
     public String getVehicleId() {
