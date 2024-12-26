@@ -3,5 +3,5 @@ package com.github.fireheart071;
 public interface Rentable {
     void rent(Customer customer, int days);
 
-    void returnVehicle();
+    void returnVehicle(String vehicleId);
 }

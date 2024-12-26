@@ -1,17 +1,21 @@
 package com.github.fireheart071;
 
-public class Customer {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Customer {
     private String name;
     private int age;
-    private boolean hasDrivingLiscense;
+    private boolean hasDrivingLicense;
     private String phoneNumber;
-    private int numberOfRentals;
+    private List<RentalTransaction> rentalHistory;
 
-    public Customer(String name){
-        this.name = name;
-        numberOfRentals ++;
-        this.hasDrivingLiscense = false;
+    public Customer(String name, int age, boolean hasDrivingLicense, String phoneNumber) {
+        setName(name);
+        setAge(age);
+        setHasDrivingLicense(hasDrivingLicense);
+        setPhoneNumber(phoneNumber);
+        this.rentalHistory = new ArrayList<>();
     }
 
     public String getName() {
@@ -19,6 +23,9 @@ public class Customer {
     }
 
     public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
         this.name = name;
     }
 
@@ -27,40 +34,36 @@ public class Customer {
     }
 
     public void setAge(int age) {
-        if(age < 18){
-            throw new IllegalArgumentException("customer is not eligible because of age");
+        if (age < 18) {
+            throw new IllegalArgumentException("Customer must be at least 18 years old");
         }
         this.age = age;
     }
 
-    public boolean isHasDrivingLiscense() {
-        if(hasDrivingLiscense == false){
-            throw new IllegalArgumentException("customer does not have driving license");
-        }
-        return hasDrivingLiscense;
+    public boolean hasDrivingLicense() {
+        return hasDrivingLicense;
     }
 
-    public void setHasDrivingLiscense(boolean hasDrivingLiscense) {
-        this.hasDrivingLiscense = hasDrivingLiscense;
+    public void setHasDrivingLicense(boolean hasDrivingLicense) {
+        this.hasDrivingLicense = hasDrivingLicense;
     }
 
     public String getPhoneNumber() {
-        if(phoneNumber == null || phoneNumber.trim().isEmpty()){
-            throw new IllegalArgumentException("phoneNumber cannot be empty");
-        }
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
+        if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
+            throw new IllegalArgumentException("Phone number cannot be empty");
+        }
         this.phoneNumber = phoneNumber;
     }
 
-    public int getNumberOfRentals() {
-        return numberOfRentals;
+    public List<RentalTransaction> getRentalHistory() {
+        return rentalHistory;
     }
 
-    public void setNumberOfRentals(int numberOfRentals) {
-        this.numberOfRentals = numberOfRentals;
+    public void addRentalTransaction(RentalTransaction transaction) {
+        rentalHistory.add(transaction);
     }
-    
 }

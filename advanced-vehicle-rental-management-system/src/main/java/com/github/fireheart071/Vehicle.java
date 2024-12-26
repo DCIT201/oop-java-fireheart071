@@ -8,6 +8,10 @@ public abstract class Vehicle {
     private boolean isAvailable;
 
     // Constructors with validation
+    public Vehicle(double baseRentalRate){
+        this.baseRentalRate = baseRentalRate;
+    }
+
     public Vehicle (String vehicleId, String model, double baseRentalRate, boolean isAvailable){
         if(vehicleId == null || vehicleId.trim().isEmpty()){
             throw new IllegalArgumentException("vehicleId cannot be empty");
@@ -21,7 +25,7 @@ public abstract class Vehicle {
         this.vehicleId = vehicleId;
         this.model = model;
         this.baseRentalRate = baseRentalRate;
-        this.isAvailable = false;
+        this.isAvailable = isAvailable;
     }
     // Getters and setters
     public String getVehicleId() {
@@ -59,12 +63,7 @@ public abstract class Vehicle {
     }
 
     // Abstract methods for rental calculation
-    public double calculateRentalCost(int days){
-        double total = baseRentalRate * days;
-        return total;
-    }
+    public abstract double calculateRentalCost(int days);
     
-    public boolean isAvailableForRental(){
-        return true;
-    }
+    public abstract boolean isAvailableForRental();
 }
