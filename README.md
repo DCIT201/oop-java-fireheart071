@@ -20,13 +20,17 @@ This project demonstrates **Object-Oriented Programming (OOP)** principles in Ja
 ## Setup
 
 ### 1. Clone the repository:
-```bash
+``bash
 git clone https://github.com/DCIT201/oop-java-fireheart071.git
 cd oop-java-fireheart071
+``
 
-    
 ## Build the project
+``bash
 mvn clean install
+``
 
-### Run Tests with JUnit4.11
+## Run Tests with JUnit4.11
+``bash
 mvn test
+``
